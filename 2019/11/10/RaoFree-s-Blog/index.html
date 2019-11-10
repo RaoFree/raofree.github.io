@@ -12,14 +12,14 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="修改用户所属组 123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin  更改目录&#x2F;文件属主属组 12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup &#x2F;iasp  更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(">
+    <meta name="description" content="修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R userName">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
-<meta property="og:description" content="修改用户所属组 123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin  更改目录&#x2F;文件属主属组 12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup &#x2F;iasp  更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(">
+<meta property="og:description" content="修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R userName">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T16:09:55.420Z">
+<meta property="og:updated_time" content="2019-11-10T22:51:23.484Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -173,13 +173,20 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>修改用户所属组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd emcgroup</span><br><span class="line">usermod -g emcgroup dmadmin</span><br><span class="line">groups dmadmin</span><br></pre></td></tr></table></figure>
-
-<p>更改目录/文件属主属组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown iaspusr:iaspgroup da.war</span><br><span class="line">chown -R iaspusr:iaspgroup /iasp</span><br></pre></td></tr></table></figure>
-
-<p>更改<br><code>chmod -R 775 temp</code><br>netstat -nlp|grep 1489<br>￼<br>rm -rf !()<br>ls |grep -v [filename] |xargs rm -rf</p>
+            <ol>
+<li><p>修改用户所属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd groupName</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g groupName userName</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups userName</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改文件/目录属主属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//更改文件属主属组</span><br><span class="line">chown userName:groupName fileName</span><br><span class="line">//递归更改目录属主属组（目录结尾无需/）</span><br><span class="line">chown -R userName:groupName dirName</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>递归更改目录权限<br><code>chmod -R 775 dirName</code></p>
+</li>
+<li><p>查看占用端口的进程号（最后一列）<br><code>netstat -nlp|grep port</code><br>￼ </p>
+</li>
+<li><p>删除文件<br>rm -rf !()<br>ls |grep -v [filename] |xargs rm -rf</p>
+</li>
+</ol>
 <p>替换字符串：<br>sed -I “s/old/new/g” filename</p>
 <p>￼<br><em>dmadmin用户：</em><br><em>source /etc/profile</em><br>Idql权限<br>启停权限</p>
 <p>10.230.150.106:/IPD_fs</p>
@@ -211,7 +218,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2019/11/10/RaoFree-s-Blog/" data-id="ck2t70k0t0000dfnn1vvf9qo2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2019/11/10/RaoFree-s-Blog/" data-id="ck2tle8lb0000g2nn589bgjh1" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -289,14 +296,13 @@
         "dateCreated": "2019-11-10",
         "dateModified": "2019-11-11",
         "url": "http://yoursite.com/2019/11/10/RaoFree-s-Blog/",
-        "description": "修改用户所属组
-123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin
+        "description": "
+修改用户所属组
+123456//添加组groupadd groupName//为用户指定组usermod -g groupName userName//验证显示用户所属组groups userName
 
-更改目录/文件属主属组
-12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup /iasp
-
-更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(",
-        "wordCount": 178
+更改文件/目录属主属组
+1234//更改文件属主属组chown userName:groupName fileName//递归更改目录属主属组（目录结尾无需/）chown -R userName",
+        "wordCount": 189
     }
 </script>
 

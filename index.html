@@ -185,13 +185,12 @@
     
 
         <p class="article-excerpt">
-            修改用户所属组
-123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin
+            
+修改用户所属组
+123456//添加组groupadd groupName//为用户指定组usermod -g groupName userName//验证显示用户所属组groups userName
 
-更改目录/文件属主属组
-12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup /iasp
-
-更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(
+更改文件/目录属主属组
+1234//更改文件属主属组chown userName:groupName fileName//递归更改目录属主属组（目录结尾无需/）chown -R userName
         </p>
     </div>
 </article>
