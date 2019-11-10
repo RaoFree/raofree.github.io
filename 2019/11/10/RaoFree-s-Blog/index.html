@@ -6,20 +6,20 @@
     
 
     
-    <title>测试一下嘿嘿嘿 | RaoFree&#39;s Blog</title>
+    <title>Linux常用命令 | RaoFree&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="大王叫我去巡山&amp;gt;W&amp;lt;">
+    <meta name="description" content="修改用户所属组 123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin  更改目录&#x2F;文件属主属组 12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup &#x2F;iasp  更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试一下嘿嘿嘿">
+<meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
-<meta property="og:description" content="大王叫我去巡山&amp;gt;W&amp;lt;">
+<meta property="og:description" content="修改用户所属组 123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin  更改目录&#x2F;文件属主属组 12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup &#x2F;iasp  更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T12:12:41.458Z">
+<meta property="og:updated_time" content="2019-11-10T16:09:55.420Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -145,7 +145,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        测试一下嘿嘿嘿
+        Linux常用命令
         </h1>
     
 
@@ -173,7 +173,37 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>大王叫我去巡山&gt;W&lt;</p>
+            <p>修改用户所属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd emcgroup</span><br><span class="line">usermod -g emcgroup dmadmin</span><br><span class="line">groups dmadmin</span><br></pre></td></tr></table></figure>
+
+<p>更改目录/文件属主属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown iaspusr:iaspgroup da.war</span><br><span class="line">chown -R iaspusr:iaspgroup /iasp</span><br></pre></td></tr></table></figure>
+
+<p>更改<br><code>chmod -R 775 temp</code><br>netstat -nlp|grep 1489<br>￼<br>rm -rf !()<br>ls |grep -v [filename] |xargs rm -rf</p>
+<p>替换字符串：<br>sed -I “s/old/new/g” filename</p>
+<p>￼<br><em>dmadmin用户：</em><br><em>source /etc/profile</em><br>Idql权限<br>启停权限</p>
+<p>10.230.150.106:/IPD_fs</p>
+<p>cat /etc/issue 查看操作系统版本</p>
+<p>tar -xvpzf backup.tgz -C /opt 解压到指定目录</p>
+<p>删除目录时rm: cannot remove directory `emc’: Device or resource busy的解决方法：<br>fuser -m -v 目录<br>或<br>查看使用emc目录的进程 lsof|grep emc</p>
+<p>然后kill-9</p>
+<p>查看ip<br>ip addr<br>￼ </p>
+<p>永久修改ip（重启生效）<br>vim /etc/sysconfig/network/ifcfg-eth-id-XXX<br>￼ </p>
+<p>永久修改dns（立即生效）<br>vim /etc/resolv.conf<br>￼ </p>
+<p>永久修改主机名（重启生效）<br>vim /etc/hosts<br>vim /etc/HOSTNAME</p>
+<p>配置NAS开机自动挂载<br>vim /etc/fstab<br>10.230.150.108:/iasp_dctm_fs     /dctm/data       ext3   defaults      0 0</p>
+<p>统计行数<br>awk ‘{print NR}’ file|tail -n1<br>wc -l file<br>删除若干行<br>sed -I ‘1,10d’ file<br>删除最后一行<br>sed -I ‘$d’ file</p>
+<p>bcp dctmdb..dm_sysobject_s out sysbak.txt  -Udctmdbo -Pdctmdbo -SIASP_SYB_SERV -c -t”|” -r “\n” -e “error.log”</p>
+<p>按行切分文件<br>split -l 60000000 sysbak.txt</p>
+<p>sed -I ’s/[^|]+/‘”$bus”’/4’ idimage.txt</p>
+<p>查看目录占用的空间<br>所有递归：du -a<br>分区：du -h<br>整体：du -s</p>
+<p>dos、unix互转<br>vi 文件名<br>:set fileformat=unix<br>:set fileformat=dos</p>
+<p>L -lt  将该目录下文件按时间排序</p>
+<p>删除时参数列表过长：find . -name “*” -print|xargs rm -rf</p>
+<p>统计当前目录下文件个数（含子文件夹）：ls -lR|grep “^-“|wc -l<br>统计当前目录下文件个数（不含子文件夹）：ls -l|grep “^-“|wc -l<br>统计当前目录下文件夹个数：ls -l|grep “^d”|wc -l</p>
+<p>查看内存使用情况<br>cat /proc/meminfo</p>
+<p>cut -b -23,57- test   删除23-57列（不含23,57）<br>sort id_image_test_1.txt |uniq -c 每行出现次数<br>awk ‘!x[$0]++’ chongfu.txt &gt;&gt;quchong.txt 去重<br>cut -d”|” -f1,2 sourcefile &gt;&gt; directfile 指定分隔符，提取列</p>
+<p>后台运行任务并输出结果<br>nohup ./query.sql &gt;&gt;result.txt &amp;<br>显示进程号<br>[1] 14861<br>查看后台是否有相应的进程（判断后台任务是否执行完）<br>jobs -l</p>
 
         </div>
         <footer class="article-footer">
@@ -181,7 +211,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2019/11/10/RaoFree-s-Blog/" data-id="ck2sykoev00003vnn1bm8fgir" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://yoursite.com/2019/11/10/RaoFree-s-Blog/" data-id="ck2t70k0t0000dfnn1vvf9qo2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -251,17 +281,22 @@
             "@type": "Person",
             "name": "Rao"
         },
-        "headline": "测试一下嘿嘿嘿",
+        "headline": "Linux常用命令",
         "image": "http://yoursite.com",
         "keywords": "",
         "genre": "",
         "datePublished": "2019-11-10",
         "dateCreated": "2019-11-10",
-        "dateModified": "2019-11-10",
+        "dateModified": "2019-11-11",
         "url": "http://yoursite.com/2019/11/10/RaoFree-s-Blog/",
-        "description": "大王叫我去巡山&gt;W&lt;
-",
-        "wordCount": 1
+        "description": "修改用户所属组
+123groupadd emcgroupusermod -g emcgroup dmadmingroups dmadmin
+
+更改目录/文件属主属组
+12chown iaspusr:iaspgroup da.warchown -R iaspusr:iaspgroup /iasp
+
+更改chmod -R 775 tempnetstat -nlp|grep 1489￼rm -rf !(",
+        "wordCount": 178
     }
 </script>
 
@@ -368,7 +403,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/11/10/RaoFree-s-Blog/" class="title">测试一下嘿嘿嘿</a></p>
+                            <p class="item-title"><a href="/2019/11/10/RaoFree-s-Blog/" class="title">Linux常用命令</a></p>
                             <p class="item-date"><time datetime="2019-11-10T11:14:43.000Z" itemprop="datePublished">2019-11-10</time></p>
                         </div>
                     </li>
