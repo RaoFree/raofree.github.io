@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Linux常用操作 | RaoFree&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用操作">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2017&#x2F;11&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
+<meta property="og:site_name" content="RaoFree&#39;s Blog">
+<meta property="og:description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-11T13:39:04.708Z">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">专业写BUG</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Accueil</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">À propos</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Écrivez quelque chose..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Articles',
+            PAGES: 'Pages',
+            CATEGORIES: 'Catégories',
+            TAGS: 'Tags',
+            UNTITLED: '(Sans titre)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    Aucune catégorie
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-RaoFree-s-Blog" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Linux常用操作
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2017/11/10/RaoFree-s-Blog/" class="article-date">
+         <time datetime="2017-11-10T11:14:43.000Z" itemprop="datePublished">2017-11-10</time>
+      </a>
+    </div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
+<li><p>修改用户所属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd groupName</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g groupName userName</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups userName</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改文件/目录属主属组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//更改文件属主属组</span><br><span class="line">chown userName:groupName fileName</span><br><span class="line">//递归更改目录属主属组（目录结尾无需/）</span><br><span class="line">chown -R userName:groupName dirName</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>递归更改目录权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 775 dirName</span><br></pre></td></tr></table></figure>
+<p>￼ </p>
+</li>
+<li><p>压缩/解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf filename.tar dir</span><br><span class="line">tar -zxvf filename.tar -C dir</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//除指定文件外，全部删除</span><br><span class="line">rm -rf !()</span><br><span class="line">ls |grep -v [filename] |xargs rm -rf</span><br><span class="line">//当目录下文件过多，使用以下方式删除</span><br><span class="line">find . -name “*” -print|xargs rm -rf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>统计当前目录下的文件个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//含子文件夹</span><br><span class="line">ls -lR|grep “^-“|wc -l</span><br><span class="line">//不含子文件夹</span><br><span class="line">ls -l|grep “^-“|wc -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>统计当前目录下的文件夹个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l|grep “^d”|wc -l</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><ol>
+<li><p>统计文件行数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//1-10行</span><br><span class="line">sed -i ‘1,10d’ filename</span><br><span class="line">//2-9行，不含上下界(1，10)</span><br><span class="line">cut -b -1,10- filename  </span><br><span class="line">//最后一行</span><br><span class="line">sed -i ‘$d’ filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替换文件中的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i ‘s/old/new/g’ filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对文件中的指定列（如列1，列2）进行提取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d”分隔符” -f1,2 sourcefile &gt;&gt; directfile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按行切分文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split -l linecount filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件行级去重</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//统计文件中每行内容的重复次数</span><br><span class="line">sort filename |uniq -c </span><br><span class="line">//去除文件中的重复行</span><br><span class="line">awk ‘!x[$0]++’ beforeFilename&gt;&gt;afterFilename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件格式（dos/unix）转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi filename</span><br><span class="line">:set fileformat=unix</span><br><span class="line">:set fileformat=dos</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后台执行脚本并将结果输出至文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//执行后控制台将显示进程号</span><br><span class="line">nohup ./filename &gt;&gt;resultFilename &amp;</span><br><span class="line">//确认该进程是否正在后台运行</span><br><span class="line">ps aux|grep pid</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="机器信息类操作"><a href="#机器信息类操作" class="headerlink" title="机器信息类操作"></a>机器信息类操作</h1><ol>
+<li><p>查看ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看操作系统版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看内存使用情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前目录占用空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//详细信息</span><br><span class="line">du -a</span><br><span class="line">//按分区</span><br><span class="line">du -h</span><br><span class="line">//总占用空间</span><br><span class="line">du -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看占用端口的进程号（最后一列）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlp|grep port</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看使用某文件的进程号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof|grep filename</span><br><span class="line">fuser -m -v filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久修改ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network/ifcfg-eth-id-XXX</span><br><span class="line">修改IPADDR项的值</span><br><span class="line">重启机器生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久修改主机名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line">vim /etc/HOSTNAME</span><br><span class="line">重启生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久修改dns</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/resolv.conf</span><br><span class="line">￼修改nameserver项的值</span><br><span class="line">立即生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置NAS开机自动挂载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">NAS   挂载目录   文件系统   defaults   0   0</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yoursite.com/2017/11/10/RaoFree-s-Blog/" data-id="ck2uixiop0001w4nn6zsd07k7" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Rao"
+        },
+        "headline": "Linux常用操作",
+        "image": "http://yoursite.com",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2017-11-10",
+        "dateCreated": "2017-11-10",
+        "dateModified": "2019-11-11",
+        "url": "http://yoursite.com/2017/11/10/RaoFree-s-Blog/",
+        "description": "基本操作
+修改用户所属组
+123456//添加组groupadd groupName//为用户指定组usermod -g groupName userName//验证显示用户所属组groups userName
+
+更改文件/目录属主属组
+1234//更改文件属主属组chown userName:groupName fileName//递归更改目录属主属组（目录结尾无需/）chown -R user",
+        "wordCount": 361
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>suivre:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/RaoFree" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="https://weibo.com/u/1309892082" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/08/07/what/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">+ récent</strong>
+        <p class="article-nav-title">
+        
+            用Docker搭建DNS服务器
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">récents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/11/11/%E6%90%AC%E5%AE%B6%E5%95%A6-W/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/11/11/%E6%90%AC%E5%AE%B6%E5%95%A6-W/" class="title">搬家啦&gt;W&lt;</a></p>
+                            <p class="item-date"><time datetime="2019-11-11T13:49:43.000Z" itemprop="datePublished">2019-11-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/20/lambda/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/05/20/lambda/" class="title">Lambda常用功能图</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T11:14:43.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/07/what/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/08/07/what/" class="title">用Docker搭建DNS服务器</a></p>
+                            <p class="item-date"><time datetime="2018-08-07T11:14:43.000Z" itemprop="datePublished">2018-08-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/10/RaoFree-s-Blog/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/11/10/RaoFree-s-Blog/" class="title">Linux常用操作</a></p>
+                            <p class="item-date"><time datetime="2017-11-10T11:14:43.000Z" itemprop="datePublished">2017-11-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">liens</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Rao</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yoursite.com/2017/11/10/RaoFree-s-Blog/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
