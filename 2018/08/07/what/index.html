@@ -6,20 +6,20 @@
     
 
     
-    <title>Linux常用操作 | RaoFree&#39;s Blog</title>
+    <title>用Docker搭建DNS服务器 | RaoFree&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
+    <meta name="description" content="环境：CentOS 7 一、安装Docker1.查看内核版本Docker 要求 CentOS 系统的内核版本高于 3.10 1uname -r [image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126&#x2F;5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png] 2.安装Docker1yum -y i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux常用操作">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
+<meta property="og:title" content="用Docker搭建DNS服务器">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;08&#x2F;07&#x2F;what&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
-<meta property="og:description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
+<meta property="og:description" content="环境：CentOS 7 一、安装Docker1.查看内核版本Docker 要求 CentOS 系统的内核版本高于 3.10 1uname -r [image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126&#x2F;5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png] 2.安装Docker1yum -y i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-11T12:52:39.035Z">
+<meta property="og:updated_time" content="2019-11-11T13:30:06.823Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -138,14 +138,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-RaoFree-s-Blog" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-what" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Linux常用操作
+        用Docker搭建DNS服务器
         </h1>
     
 
@@ -156,8 +156,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2019/11/10/RaoFree-s-Blog/" class="article-date">
-         <time datetime="2019-11-10T11:14:43.000Z" itemprop="datePublished">2019-11-10</time>
+      <a href="/2018/08/07/what/" class="article-date">
+         <time datetime="2018-08-07T11:14:43.000Z" itemprop="datePublished">2018-08-07</time>
       </a>
     </div>
 
@@ -173,89 +173,71 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
-<li><p>修改用户所属组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd groupName</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g groupName userName</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups userName</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改文件/目录属主属组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//更改文件属主属组</span><br><span class="line">chown userName:groupName fileName</span><br><span class="line">//递归更改目录属主属组（目录结尾无需/）</span><br><span class="line">chown -R userName:groupName dirName</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>递归更改目录权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 775 dirName</span><br></pre></td></tr></table></figure>
-<p>￼ </p>
-</li>
-<li><p>压缩/解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf filename.tar dir</span><br><span class="line">tar -zxvf filename.tar -C dir</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//除指定文件外，全部删除</span><br><span class="line">rm -rf !()</span><br><span class="line">ls |grep -v [filename] |xargs rm -rf</span><br><span class="line">//当目录下文件过多，使用以下方式删除</span><br><span class="line">find . -name “*” -print|xargs rm -rf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>统计当前目录下的文件个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//含子文件夹</span><br><span class="line">ls -lR|grep “^-“|wc -l</span><br><span class="line">//不含子文件夹</span><br><span class="line">ls -l|grep “^-“|wc -l</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>统计当前目录下的文件夹个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l|grep “^d”|wc -l</span><br></pre></td></tr></table></figure>
+            <p>环境：CentOS 7</p>
+<h1 id="一、安装Docker"><a href="#一、安装Docker" class="headerlink" title="一、安装Docker"></a>一、安装Docker</h1><h2 id="1-查看内核版本"><a href="#1-查看内核版本" class="headerlink" title="1.查看内核版本"></a><em>1.查看内核版本</em></h2><p>Docker 要求 CentOS 系统的内核版本高于 3.10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<p>[image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126/5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png]</p>
+<h2 id="2-安装Docker"><a href="#2-安装Docker" class="headerlink" title="2.安装Docker"></a><em>2.安装Docker</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker-io</span><br></pre></td></tr></table></figure>
+<p>[image:60F221DD-4E71-4405-9C58-73F2C94C124F-16891-00009B7C48CB6CE8/6EB39140-C812-4898-92E5-DDD915B509C7.png]</p>
+<h2 id="3-启动Docker服务"><a href="#3-启动Docker服务" class="headerlink" title="3.启动Docker服务"></a><em>3.启动Docker服务</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><ol>
-<li><p>统计文件行数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除文件行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//1-10行</span><br><span class="line">sed -i ‘1,10d’ filename</span><br><span class="line">//2-9行，不含上下界(1，10)</span><br><span class="line">cut -b -1,10- filename  </span><br><span class="line">//最后一行</span><br><span class="line">sed -i ‘$d’ filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>替换文件中的字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i ‘s/old/new/g’ filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对文件中的指定列（如列1，列2）进行提取</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d”分隔符” -f1,2 sourcefile &gt;&gt; directfile</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>按行切分文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split -l linecount filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件行级去重</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//统计文件中每行内容的重复次数</span><br><span class="line">sort filename |uniq -c </span><br><span class="line">//去除文件中的重复行</span><br><span class="line">awk ‘!x[$0]++’ beforeFilename&gt;&gt;afterFilename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件格式（dos/unix）转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi filename</span><br><span class="line">:set fileformat=unix</span><br><span class="line">:set fileformat=dos</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>后台执行脚本并将结果输出至文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//执行后控制台将显示进程号</span><br><span class="line">nohup ./filename &gt;&gt;resultFilename &amp;</span><br><span class="line">//确认该进程是否正在后台运行</span><br><span class="line">ps aux|grep pid</span><br></pre></td></tr></table></figure>
+<h2 id="4-安装docker-compose"><a href="#4-安装docker-compose" class="headerlink" title="4.安装docker-compose"></a><em>4.安装docker-compose</em></h2><p>这里安装1.22.0最新版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<h1 id="机器信息类操作"><a href="#机器信息类操作" class="headerlink" title="机器信息类操作"></a>机器信息类操作</h1><ol>
-<li><p>查看ip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看操作系统版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看内存使用情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看当前目录占用空间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//详细信息</span><br><span class="line">du -a</span><br><span class="line">//按分区</span><br><span class="line">du -h</span><br><span class="line">//总占用空间</span><br><span class="line">du -s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看占用端口的进程号（最后一列）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlp|grep port</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看使用某文件的进程号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof|grep filename</span><br><span class="line">fuser -m -v filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>永久修改ip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network/ifcfg-eth-id-XXX</span><br><span class="line">修改IPADDR项的值</span><br><span class="line">重启机器生效</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>永久修改主机名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line">vim /etc/HOSTNAME</span><br><span class="line">重启生效</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>永久修改dns</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/resolv.conf</span><br><span class="line">￼修改nameserver项的值</span><br><span class="line">立即生效</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置NAS开机自动挂载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">NAS   挂载目录   文件系统   defaults   0   0</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p>增加可执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、Docker搭建DNS服务器"><a href="#二、Docker搭建DNS服务器" class="headerlink" title="二、Docker搭建DNS服务器"></a>二、Docker搭建DNS服务器</h1><h2 id="1-下载andyshinn-dnsmasq镜像"><a href="#1-下载andyshinn-dnsmasq镜像" class="headerlink" title="1.下载andyshinn/dnsmasq镜像"></a><em>1.下载andyshinn/dnsmasq镜像</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull andyshinn/dnsmasq</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-创建dns卷挂载路径"><a href="#2-创建dns卷挂载路径" class="headerlink" title="2.创建dns卷挂载路径"></a><em>2.创建dns卷挂载路径</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dockerdata/docker-dns/</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-创建配置文件"><a href="#3-创建配置文件" class="headerlink" title="3.创建配置文件"></a><em>3.创建配置文件</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dockerdata/docker-dns/resolv.dnsmasq</span><br></pre></td></tr></table></figure>
+
+<p>添加公共DNS地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /dockerdata/docker-dns/resolv.dnsmasq</span><br></pre></td></tr></table></figure>
+<p>[image:BD9C4008-8E50-4CA1-B591-DFDFAD4DA37D-16891-00009BC1CD928B08/A5AAC712-4B13-453B-A980-65FB24636595.png]</p>
+<h2 id="4-创建配置文件"><a href="#4-创建配置文件" class="headerlink" title="4.创建配置文件"></a><em>4.创建配置文件</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dockerdata/docker-dns/dnsmasqhosts</span><br></pre></td></tr></table></figure>
+
+<p>添加DNS解析规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /dockerdata/docker-dns/dnsmasqhosts</span><br></pre></td></tr></table></figure>
+<p>[image:6898CCB2-4B05-4F71-B597-ABC36B5A74C6-16891-00009BCA5CB8233D/8E7F45AF-EE70-4312-9C8D-2BAF0F7160F7.png]</p>
+<h2 id="5-新建配置文件"><a href="#5-新建配置文件" class="headerlink" title="5.新建配置文件"></a><em>5.新建配置文件</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dockerdata/docker-dns/dnsmasq.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /dockerdata/docker-dns/dnsmasq.conf</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resolv-file=/etc/resolv.dnsmasq</span><br><span class="line">addn-hosts=/etc/dnsmasqhosts</span><br></pre></td></tr></table></figure>
+<p>[image:69D7AC16-1493-40C9-A2C4-1C0D2437917F-16891-00009BCF972690B3/27ACD73E-1B96-4DE6-A237-8BB7274A87E4.png]</p>
+<h2 id="6-新建Docker启动文件，配置Docker的DNS服务"><a href="#6-新建Docker启动文件，配置Docker的DNS服务" class="headerlink" title="6.新建Docker启动文件，配置Docker的DNS服务"></a><em>6.新建Docker启动文件，配置Docker的DNS服务</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dockerdata/docker-dns/dns.yaml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /dockerdata/docker-dns/dns.yaml</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">version: “2”</span><br><span class="line">services:</span><br><span class="line">  docker-dns:</span><br><span class="line">    container_name: docker-dns</span><br><span class="line">    image: andyshinn/dnsmasq</span><br><span class="line">    hostname: docker-dns</span><br><span class="line">    volumes:</span><br><span class="line">      - /dockerdata/docker-dns/resolv.dnsmasq:/etc/resolv.dnsmasq</span><br><span class="line">      - /dockerdata/docker-dns/dnsmasqhosts:/etc/dnsmasqhosts</span><br><span class="line">      - /dockerdata/docker-dns/dnsmasq.conf:/etc/dnsmasq.conf</span><br><span class="line">      - /etc/localtime:/etc/localtime:ro</span><br><span class="line">    ports:</span><br><span class="line">      - 53:53/tcp</span><br><span class="line">      - 53:53/udp</span><br><span class="line">    cap_add: </span><br><span class="line">      - NET_ADMIN</span><br><span class="line">    restart: on-failure:1</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-运行Docker的DNS服务"><a href="#7-运行Docker的DNS服务" class="headerlink" title="7.运行Docker的DNS服务"></a><em>7.运行Docker的DNS服务</em></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f /dockerdata/docker-dns/dns.yaml up -d</span><br></pre></td></tr></table></figure>
+<p>[image:5E38B6F3-53ED-4BBD-B8E7-11A4E1F3AFD3-16891-00009BD745AC0F9C/EB89A2E9-BC90-4F54-8972-B73C545F8480.png]</p>
+<h2 id="8-修改宿主机的DNS服务器"><a href="#8-修改宿主机的DNS服务器" class="headerlink" title="8.修改宿主机的DNS服务器"></a><em>8.修改宿主机的DNS服务器</em></h2><p>回到宿主机，修改宿主机DNS服务器地址为：docker-dns所在虚拟机IP<br>[image:3D9ED3CC-0A1E-4819-92CC-09804E521600-16891-00009BDBF257BEB6/51A26DC9-2A92-4C39-B126-F8E92BAC70AF.png]</p>
+<h2 id="9-在宿主机上进行测试"><a href="#9-在宿主机上进行测试" class="headerlink" title="9.在宿主机上进行测试"></a><em>9.在宿主机上进行测试</em></h2><p>在宿主机的命令行中，使用dig命令，对虚拟机配置文件dnsmasqhosts中配置的IP-域名映射，进行测试。<br>这里是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.211.55.8  raofree.com</span><br></pre></td></tr></table></figure>
+<p>[image:ACAAF793-B106-48D1-A095-5F91A76056F6-16891-00009BE484FF43D5/045AA063-CCE5-40E6-A258-7C7E2EBA2F82.png]</p>
+<p>由图可见：Docker的DNS服务器上配置的域名raofree.com，在宿主机上通过该DNS服务器解析成功。</p>
+<h1 id="三、遇到的问题-amp-解决方案"><a href="#三、遇到的问题-amp-解决方案" class="headerlink" title="三、遇到的问题&amp;解决方案"></a>三、遇到的问题&amp;解决方案</h1><h2 id="1-问题："><a href="#1-问题：" class="headerlink" title="1.问题："></a><em>1.问题：</em></h2><p>在运行Docker时，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f /dockerdata/docker-dns/dns.yaml up -d</span><br></pre></td></tr></table></figure>
+
+<p>报异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Conflict. The container name “/docker-dns” is already in use by container f62d2e5ee13c8e22bf1f2f918c94b7534e6f6f7f8516a530d929023fd6645812. You have to remove (or rename) that container to be able to reuse that name.</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-解决方案："><a href="#2-解决方案：" class="headerlink" title="2.解决方案："></a><em>2.解决方案：</em></h2><p>列出所有容器，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p>[image:6562913C-EF71-47A0-9B8D-5BF5964B3ED5-16891-00009C1AE41EA707/692F2356-F75F-48E0-AF66-F6F79F28D5F1.png]</p>
+<p>找到报错信息中的container_id<br>根据id（建议写id号前4+位）删除docker容器<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm f6</span><br></pre></td></tr></table></figure>
+<p>[image:86E2A055-82F9-461C-9F25-7A2B4EF9082E-16891-00009C1EB9833416/A78DEB54-601F-4CFB-AF44-BC7C2D5D0748.png]</p>
+<p>再次运行Docker，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f /dockerdata/docker-dns/dns.yaml up -d</span><br></pre></td></tr></table></figure>
+
+<p>成功</p>
 
         </div>
         <footer class="article-footer">
@@ -263,7 +245,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2019/11/10/RaoFree-s-Blog/" data-id="ck2ugs9g00000olnn2vdgef8t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2018/08/07/what/" data-id="ck2ugs9gq0001olnn7xheftkk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -333,21 +315,20 @@
             "@type": "Person",
             "name": "Rao"
         },
-        "headline": "Linux常用操作",
+        "headline": "用Docker搭建DNS服务器",
         "image": "http://yoursite.com",
         "keywords": "",
         "genre": "",
-        "datePublished": "2019-11-10",
-        "dateCreated": "2019-11-10",
+        "datePublished": "2018-08-07",
+        "dateCreated": "2018-08-07",
         "dateModified": "2019-11-11",
-        "url": "http://yoursite.com/2019/11/10/RaoFree-s-Blog/",
-        "description": "基本操作
-修改用户所属组
-123456//添加组groupadd groupName//为用户指定组usermod -g groupName userName//验证显示用户所属组groups userName
-
-更改文件/目录属主属组
-1234//更改文件属主属组chown userName:groupName fileName//递归更改目录属主属组（目录结尾无需/）chown -R user",
-        "wordCount": 361
+        "url": "http://yoursite.com/2018/08/07/what/",
+        "description": "环境：CentOS 7
+一、安装Docker1.查看内核版本Docker 要求 CentOS 系统的内核版本高于 3.10
+1uname -r
+[image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126/5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png]
+2.安装Docker1yum -y i",
+        "wordCount": 406
     }
 </script>
 
@@ -428,12 +409,16 @@
         
 <nav id="article-nav">
     
+        <a href="/2019/11/10/RaoFree-s-Blog/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Linux常用操作
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
     
-        <a href="/2018/08/07/what/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">用Docker搭建DNS服务器</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
     
 </nav>
 
@@ -566,7 +551,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://yoursite.com/2019/11/10/RaoFree-s-Blog/';
+    var disqus_url = 'http://yoursite.com/2018/08/07/what/';
     
     (function() {
     var dsq = document.createElement('script');
