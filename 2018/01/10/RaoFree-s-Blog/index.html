@@ -5,16 +5,16 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="//blog.raofree.cn">
   <title>Linux常用操作 | RaoFree&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用操作">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;01&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
+<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2018&#x2F;01&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
 <meta property="og:description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-11-11T14:37:13.478Z">
 <meta name="twitter:card" content="summary">
   
@@ -170,86 +170,86 @@
       
         <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
 <li><p>修改用户所属组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd groupName</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g groupName userName</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups userName</span><br></pre></td></tr></table></figure>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd <span class="keyword">group</span>Name</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g <span class="keyword">group</span>Name <span class="keyword">user</span>Name</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups <span class="keyword">user</span>Name</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更改文件/目录属主属组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//更改文件属主属组</span><br><span class="line">chown userName:groupName fileName</span><br><span class="line">//递归更改目录属主属组（目录结尾无需/）</span><br><span class="line">chown -R userName:groupName dirName</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更改文件属主属组</span></span><br><span class="line">chown <span class="string">userName:</span>groupName fileName</span><br><span class="line"><span class="comment">//递归更改目录属主属组（目录结尾无需/）</span></span><br><span class="line">chown -R <span class="string">userName:</span>groupName dirName</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>递归更改目录权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 775 dirName</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R <span class="number">775</span> dirName</span><br></pre></td></tr></table></figure>
 <p>￼ </p>
 </li>
 <li><p>压缩/解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf filename.tar dir</span><br><span class="line">tar -zxvf filename.tar -C dir</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-cvf</span> <span class="selector-tag">filename</span><span class="selector-class">.tar</span> <span class="selector-tag">dir</span></span><br><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">filename</span><span class="selector-class">.tar</span> <span class="selector-tag">-C</span> <span class="selector-tag">dir</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//除指定文件外，全部删除</span><br><span class="line">rm -rf !()</span><br><span class="line">ls |grep -v [filename] |xargs rm -rf</span><br><span class="line">//当目录下文件过多，使用以下方式删除</span><br><span class="line">find . -name “*” -print|xargs rm -rf</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//除指定文件外，全部删除</span></span><br><span class="line"><span class="keyword">rm</span> -rf !()</span><br><span class="line"><span class="keyword">ls</span> |grep -v [filename] |xargs <span class="keyword">rm</span> -rf</span><br><span class="line"><span class="comment">//当目录下文件过多，使用以下方式删除</span></span><br><span class="line">find . -name “*” -<span class="keyword">print</span>|xargs <span class="keyword">rm</span> -rf</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>统计当前目录下的文件个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//含子文件夹</span><br><span class="line">ls -lR|grep “^-“|wc -l</span><br><span class="line">//不含子文件夹</span><br><span class="line">ls -l|grep “^-“|wc -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//含子文件夹</span></span><br><span class="line">ls -lR<span class="string">|grep “^-“|wc -l</span></span><br><span class="line"><span class="comment">//不含子文件夹</span></span><br><span class="line">ls -l<span class="string">|grep “^-“|wc -l</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>统计当前目录下的文件夹个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l|grep “^d”|wc -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l|<span class="type">grep</span> “^d”|<span class="type">wc</span> -l</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><ol>
 <li><p>统计文件行数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wc -l filename</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除文件行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//1-10行</span><br><span class="line">sed -i ‘1,10d’ filename</span><br><span class="line">//2-9行，不含上下界(1，10)</span><br><span class="line">cut -b -1,10- filename  </span><br><span class="line">//最后一行</span><br><span class="line">sed -i ‘$d’ filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-10行</span></span><br><span class="line">sed -i ‘<span class="number">1</span>,<span class="number">10</span>d’ filename</span><br><span class="line"><span class="comment">//2-9行，不含上下界(1，10)</span></span><br><span class="line">cut -b <span class="number">-1</span>,<span class="number">10</span>- filename  </span><br><span class="line"><span class="comment">//最后一行</span></span><br><span class="line">sed -i ‘$d’ filename</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>替换文件中的字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i ‘s/old/new/g’ filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i ‘s<span class="regexp">/old/</span><span class="keyword">new</span><span class="regexp">/g’ filename</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>对文件中的指定列（如列1，列2）进行提取</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d”分隔符” -f1,2 sourcefile &gt;&gt; directfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d”分隔符” -f1,<span class="number">2</span> sourcefile &gt;&gt; directfile</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>按行切分文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split -l linecount filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">split</span> -l linecount <span class="keyword">filename</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>文件行级去重</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//统计文件中每行内容的重复次数</span><br><span class="line">sort filename |uniq -c </span><br><span class="line">//去除文件中的重复行</span><br><span class="line">awk ‘!x[$0]++’ beforeFilename&gt;&gt;afterFilename</span><br></pre></td></tr></table></figure>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//统计文件中每行内容的重复次数</span></span><br><span class="line"><span class="keyword">sort</span> filename |uniq -c </span><br><span class="line"><span class="comment">//去除文件中的重复行</span></span><br><span class="line">awk ‘!x[$0]++’ beforeFilename&gt;&gt;afterFilename</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>文件格式（dos/unix）转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi filename</span><br><span class="line">:set fileformat=unix</span><br><span class="line">:set fileformat=dos</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi filename</span><br><span class="line">:<span class="builtin-name">set</span> <span class="attribute">fileformat</span>=unix</span><br><span class="line">:<span class="builtin-name">set</span> <span class="attribute">fileformat</span>=dos</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>后台执行脚本并将结果输出至文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//执行后控制台将显示进程号</span><br><span class="line">nohup ./filename &gt;&gt;resultFilename &amp;</span><br><span class="line">//确认该进程是否正在后台运行</span><br><span class="line">ps aux|grep pid</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行后控制台将显示进程号</span></span><br><span class="line">nohup ./filename &gt;&gt;resultFilename <span class="meta">&amp;</span></span><br><span class="line"><span class="comment">//确认该进程是否正在后台运行</span></span><br><span class="line">ps aux<span class="string">|grep pid</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h1 id="机器信息类操作"><a href="#机器信息类操作" class="headerlink" title="机器信息类操作"></a>机器信息类操作</h1><ol>
 <li><p>查看ip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ip addr</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看操作系统版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/etc/i</span>ssue</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看内存使用情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> /<span class="meta">proc</span>/meminfo</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看当前目录占用空间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//详细信息</span><br><span class="line">du -a</span><br><span class="line">//按分区</span><br><span class="line">du -h</span><br><span class="line">//总占用空间</span><br><span class="line">du -s</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//详细信息</span></span><br><span class="line">du -a</span><br><span class="line"><span class="comment">//按分区</span></span><br><span class="line">du -h</span><br><span class="line"><span class="comment">//总占用空间</span></span><br><span class="line">du -s</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看占用端口的进程号（最后一列）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlp|grep port</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlp<span class="string">|grep port</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看使用某文件的进程号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof|grep filename</span><br><span class="line">fuser -m -v filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof|grep <span class="meta">filename</span></span><br><span class="line">fuser -m -v <span class="meta">filename</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>永久修改ip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network/ifcfg-eth-id-XXX</span><br><span class="line">修改IPADDR项的值</span><br><span class="line">重启机器生效</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>sysconfig<span class="regexp">/network/i</span>fcfg-eth-id-XXX</span><br><span class="line">修改IPADDR项的值</span><br><span class="line">重启机器生效</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>永久修改主机名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line">vim /etc/HOSTNAME</span><br><span class="line">重启生效</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>hosts</span><br><span class="line">vim <span class="regexp">/etc/</span>HOSTNAME</span><br><span class="line">重启生效</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>永久修改dns</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/resolv.conf</span><br><span class="line">￼修改nameserver项的值</span><br><span class="line">立即生效</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> /etc/resolv.<span class="keyword">conf</span></span><br><span class="line">￼修改nameserver项的值</span><br><span class="line">立即生效</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置NAS开机自动挂载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">NAS   挂载目录   文件系统   defaults   0   0</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">NAS   挂载目录   文件系统   defaults   <span class="number">0</span>   <span class="number">0</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -309,7 +309,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/10/RaoFree-s-Blog/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2018/01/10/RaoFree-s-Blog/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,6 +348,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本操作"><span class="toc-number">1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">2.</span> <span class="toc-text">文件操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#机器信息类操作"><span class="toc-number">3.</span> <span class="toc-text">机器信息类操作</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -389,7 +402,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
