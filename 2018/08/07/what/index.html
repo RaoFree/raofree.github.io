@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
 <meta property="og:description" content="环境：CentOS 7 一、安装Docker1.查看内核版本Docker 要求 CentOS 系统的内核版本高于 3.10 1uname -r [image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126&#x2F;5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png] 2.安装Docker1yum -y i">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-11T13:37:46.537Z">
+<meta property="og:updated_time" content="2020-01-30T13:19:59.564Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="RaoFree&#39;s Blog" type="application/atom+xml">
@@ -173,6 +173,7 @@
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname -r</span></span><br></pre></td></tr></table></figure>
 <p>[image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126/5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png]</p>
 <h3 id="2-安装Docker"><a href="#2-安装Docker" class="headerlink" title="2.安装Docker"></a>2.安装Docker</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> docker-io</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>[image:60F221DD-4E71-4405-9C58-73F2C94C124F-16891-00009B7C48CB6CE8/6EB39140-C812-4898-92E5-DDD915B509C7.png]</p>
 <h3 id="3-启动Docker服务"><a href="#3-启动Docker服务" class="headerlink" title="3.启动Docker服务"></a>3.启动Docker服务</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker <span class="literal">start</span></span><br></pre></td></tr></table></figure>
 
@@ -181,6 +182,7 @@
 
 <p>增加可执行权限</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>docker-compose</span><br></pre></td></tr></table></figure>
+
 
 <h1 id="二、Docker搭建DNS服务器"><a href="#二、Docker搭建DNS服务器" class="headerlink" title="二、Docker搭建DNS服务器"></a>二、Docker搭建DNS服务器</h1><h3 id="1-下载andyshinn-dnsmasq镜像"><a href="#1-下载andyshinn-dnsmasq镜像" class="headerlink" title="1.下载andyshinn/dnsmasq镜像"></a>1.下载andyshinn/dnsmasq镜像</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker</span> pull andyshinn/dnsmasq</span><br></pre></td></tr></table></figure>
 

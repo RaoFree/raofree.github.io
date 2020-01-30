@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.raofree.cn">
-  <title>RaoFree&#39;s Blog</title>
+  <title>Win10下，将C++编译为WebAssembly并在Web端运行 | RaoFree&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RaoFree&#39;s Blog">
-<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;index.html">
+  <meta name="description" content="环境：win10 一、环境准备安装Emscripten编译器，用于将C++程序编译为WebAssembly字节码 1.安装python-2.7.15.amd64.msi链接:https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1ysY-XNtdpCs2Lg9XS8HDhg  密码:wj0r 2.安装emsdk-1.35.0-full-64bit.exe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win10下，将C++编译为WebAssembly并在Web端运行">
+<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
+<meta property="og:description" content="环境：win10 一、环境准备安装Emscripten编译器，用于将C++程序编译为WebAssembly字节码 1.安装python-2.7.15.amd64.msi链接:https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1ysY-XNtdpCs2Lg9XS8HDhg  密码:wj0r 2.安装emsdk-1.35.0-full-64bit.exe">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-01-30T13:19:30.001Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="RaoFree&#39;s Blog" type="application/atom+xml">
@@ -145,16 +148,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-assembly-helloworld" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-assembly-helloworld" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/30/assembly-helloworld/">Win10下，将C++编译为WebAssembly并在Web端运行</a>
+    <h1 class="article-title" itemprop="name">
+      Win10下，将C++编译为WebAssembly并在Web端运行
     </h1>
   
 
@@ -170,10 +171,28 @@
         <p>环境：win10</p>
 <h1 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h1><p>安装Emscripten编译器，用于将C++程序编译为WebAssembly字节码</p>
 <h3 id="1-安装python-2-7-15-amd64-msi"><a href="#1-安装python-2-7-15-amd64-msi" class="headerlink" title="1.安装python-2.7.15.amd64.msi"></a>1.安装python-2.7.15.amd64.msi</h3><p>链接:<a href="https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg</a>  密码:wj0r</p>
-<h3 id="2-安装emsdk-1-35-0-full-64bit-exe"><a href="#2-安装emsdk-1-35-0-full-64bit-exe" class="headerlink" title="2.安装emsdk-1.35.0-full-64bit.exe"></a>2.安装emsdk-1.35.0-full-64bit.exe</h3>
-        
-          <a class="article-more-a" href="/2020/01/30/assembly-helloworld/#more">more >></a>
-        
+<h3 id="2-安装emsdk-1-35-0-full-64bit-exe"><a href="#2-安装emsdk-1-35-0-full-64bit-exe" class="headerlink" title="2.安装emsdk-1.35.0-full-64bit.exe"></a>2.安装emsdk-1.35.0-full-64bit.exe</h3><a id="more"></a>
+<p>链接:<a href="https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg</a>  密码:wj0r</p>
+<h3 id="3-运行emsdk-env-bat，自动配置环境变量"><a href="#3-运行emsdk-env-bat，自动配置环境变量" class="headerlink" title="3.运行emsdk_env.bat，自动配置环境变量"></a>3.运行emsdk_env.bat，自动配置环境变量</h3><h3 id="4-验证结果"><a href="#4-验证结果" class="headerlink" title="4.验证结果"></a>4.验证结果</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">emcc -v</span></span><br></pre></td></tr></table></figure>
+
+<p>输出如下则环境准备成功<br>[image:711A9A6F-B37C-4D1A-8E47-863375E59550-828-0000006ABFF6414B/1.png]</p>
+<h1 id="二、C-程序准备"><a href="#二、C-程序准备" class="headerlink" title="二、C++程序准备"></a>二、C++程序准备</h1><p>准备C++程序，以hello world为例</p>
+<h3 id="1-安装vs2019"><a href="#1-安装vs2019" class="headerlink" title="1.安装vs2019"></a>1.安装vs2019</h3><h3 id="2-新建项目，编写hello-cpp，内容如下"><a href="#2-新建项目，编写hello-cpp，内容如下" class="headerlink" title="2.新建项目，编写hello.cpp，内容如下"></a>2.新建项目，编写hello.cpp，内容如下</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">	  <span class="built_in">cout</span> &lt;&lt; <span class="string">"hello world"</span>;</span><br><span class="line">	  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、将C-程序编译为WebAssembly，并输出为html"><a href="#三、将C-程序编译为WebAssembly，并输出为html" class="headerlink" title="三、将C++程序编译为WebAssembly，并输出为html"></a>三、将C++程序编译为WebAssembly，并输出为html</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emcc hello.cpp -s <span class="attribute">WASM</span>=1 -o hello.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-如需编译为WebAssembly（.wasm文件），则需指定 -s WASM=1 参数；无参则默认编译为asm.js（Javascript代码）</li>
+</ul>
+<p>编译完成后，该目录将新增如下文件：<br>[image:18BBAF73-73B4-46A2-AE57-E2EC7239AB39-828-0000007197EEEDD6/2.png]</p>
+<h1 id="四、启动http的web服务，使html运行其上"><a href="#四、启动http的web服务，使html运行其上" class="headerlink" title="四、启动http的web服务，使html运行其上"></a>四、启动http的web服务，使html运行其上</h1><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emrun —no_browser —port 8080 C:<span class="symbol">\U</span>sers<span class="symbol">\r</span>ao<span class="symbol">\s</span>ource<span class="symbol">\r</span>epos<span class="symbol">\h</span>ello<span class="symbol">\h</span>ello<span class="symbol">\h</span>ello.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-参数需指定html文件全路径</li>
+</ul>
+<p>服务启动成功页面：<br>[image:EE6D5FF8-AD2E-4482-9584-77B478B78D1A-828-000000AEC47B5244/3.png]</p>
+<h1 id="四、访问网页"><a href="#四、访问网页" class="headerlink" title="四、访问网页"></a>四、访问网页</h1><p>访问 <a href="http://localhost:8080/hello.html" target="_blank" rel="noopener">http://localhost:8080/hello.html</a> ，结果如下，即成功在Web端运行C/C++程序<br>[image:FC164BD5-6BC3-466F-B786-98E7192BBE4F-828-000000A9FA4DF690/4.png]</p>
+
       
 
       
@@ -184,16 +203,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/30/assembly-helloworld/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2020/01/30/assembly-helloworld/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/11/%E6%90%AC%E5%AE%B6%E5%95%A6-W/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">搬家啦~</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -208,217 +286,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-搬家啦-W" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/%E6%90%AC%E5%AE%B6%E5%95%A6-W/">搬家啦~</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/11/%E6%90%AC%E5%AE%B6%E5%95%A6-W/" class="archive-article-date">
-  	<time datetime="2019-11-11T13:49:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>趁着双十一的折扣，便宜买了5年的域名和一台云主机，但还没有想好要玩儿点啥，就先建了个博客，简单收拾了下（页面还很丑hhh），打算把RaoStep公众号中的存货迁些进来。</p>
-<p>在微信公众号上发文章，编辑—预览—修改都不很便捷，博客相对好一些。但从公众号搬文章到这儿的过程又实在好麻烦呀，刚搬了三篇就想打住了，以后有时间再慢慢搬吧hhh</p>
-<p>借这个小地方，督促自己持续学习不定期更新～就酱吧嘿嘿</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/11/%E6%90%AC%E5%AE%B6%E5%95%A6-W/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、环境准备"><span class="toc-number">1.</span> <span class="toc-text">一、环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装python-2-7-15-amd64-msi"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.安装python-2.7.15.amd64.msi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装emsdk-1-35-0-full-64bit-exe"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.安装emsdk-1.35.0-full-64bit.exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-运行emsdk-env-bat，自动配置环境变量"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.运行emsdk_env.bat，自动配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-验证结果"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.验证结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、C-程序准备"><span class="toc-number">2.</span> <span class="toc-text">二、C++程序准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装vs2019"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.安装vs2019</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-新建项目，编写hello-cpp，内容如下"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.新建项目，编写hello.cpp，内容如下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、将C-程序编译为WebAssembly，并输出为html"><span class="toc-number">3.</span> <span class="toc-text">三、将C++程序编译为WebAssembly，并输出为html</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、启动http的web服务，使html运行其上"><span class="toc-number">4.</span> <span class="toc-text">四、启动http的web服务，使html运行其上</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、访问网页"><span class="toc-number">5.</span> <span class="toc-text">四、访问网页</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-what" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/07/what/">用Docker搭建DNS服务器</a>
-    </h1>
   
 
-        
-        <a href="/2018/08/07/what/" class="archive-article-date">
-  	<time datetime="2018-08-07T11:14:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>环境：CentOS 7</p>
-<h1 id="一、安装Docker"><a href="#一、安装Docker" class="headerlink" title="一、安装Docker"></a>一、安装Docker</h1><h3 id="1-查看内核版本"><a href="#1-查看内核版本" class="headerlink" title="1.查看内核版本"></a>1.查看内核版本</h3><p>Docker 要求 CentOS 系统的内核版本高于 3.10</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname -r</span></span><br></pre></td></tr></table></figure>
-<p>[image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126/5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png]</p>
-<h3 id="2-安装Docker"><a href="#2-安装Docker" class="headerlink" title="2.安装Docker"></a>2.安装Docker</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> docker-io</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/08/07/what/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/07/what/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RaoFree-s-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/10/RaoFree-s-Blog/">Linux常用操作</a>
-    </h1>
   
 
-        
-        <a href="/2018/01/10/RaoFree-s-Blog/" class="archive-article-date">
-  	<time datetime="2018-01-10T11:14:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
-<li><p>修改用户所属组</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd <span class="keyword">group</span>Name</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g <span class="keyword">group</span>Name <span class="keyword">user</span>Name</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups <span class="keyword">user</span>Name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改文件/目录属主属组</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更改文件属主属组</span></span><br><span class="line">chown <span class="string">userName:</span>groupName fileName</span><br><span class="line"><span class="comment">//递归更改目录属主属组（目录结尾无需/）</span></span><br><span class="line">chown -R <span class="string">userName:</span>groupName dirName</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/01/10/RaoFree-s-Blog/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/10/RaoFree-s-Blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -441,8 +334,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

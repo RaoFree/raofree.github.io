@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
 <meta property="og:description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R user">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-11T14:37:13.478Z">
+<meta property="og:updated_time" content="2020-01-30T13:17:52.240Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="RaoFree&#39;s Blog" type="application/atom+xml">
@@ -174,6 +174,7 @@
 </li>
 <li><p>更改文件/目录属主属组</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更改文件属主属组</span></span><br><span class="line">chown <span class="string">userName:</span>groupName fileName</span><br><span class="line"><span class="comment">//递归更改目录属主属组（目录结尾无需/）</span></span><br><span class="line">chown -R <span class="string">userName:</span>groupName dirName</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 </li>
 <li><p>递归更改目录权限</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R <span class="number">775</span> dirName</span><br></pre></td></tr></table></figure>
