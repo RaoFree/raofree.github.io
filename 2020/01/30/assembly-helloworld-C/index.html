@@ -11,12 +11,17 @@
   <meta name="description" content="环境：win10 一、环境准备安装Emscripten编译器，用于将C++程序编译为WebAssembly字节码 1.安装python-2.7.15.amd64.msi链接:https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1ysY-XNtdpCs2Lg9XS8HDhg  密码:wj0r 2.安装emsdk-1.35.0-full-64bit.exe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Win10下，将C++编译为WebAssembly并在Web端运行">
-<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld&#x2F;index.html">
+<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld-C&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
 <meta property="og:description" content="环境：win10 一、环境准备安装Emscripten编译器，用于将C++程序编译为WebAssembly字节码 1.安装python-2.7.15.amd64.msi链接:https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1ysY-XNtdpCs2Lg9XS8HDhg  密码:wj0r 2.安装emsdk-1.35.0-full-64bit.exe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-30T13:19:30.001Z">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld-C&#x2F;1.png">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld-C&#x2F;2.png">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld-C&#x2F;3.png">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld-C&#x2F;4.png">
+<meta property="og:updated_time" content="2020-01-30T13:43:33.580Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;01&#x2F;30&#x2F;assembly-helloworld-C&#x2F;1.png">
   
     <link rel="alternative" href="/atom.xml" title="RaoFree&#39;s Blog" type="application/atom+xml">
   
@@ -148,7 +153,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-assembly-helloworld" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-assembly-helloworld-C" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -160,7 +165,7 @@
   
 
         
-        <a href="/2020/01/30/assembly-helloworld/" class="archive-article-date">
+        <a href="/2020/01/30/assembly-helloworld-C/" class="archive-article-date">
   	<time datetime="2020-01-30T11:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-30</time>
 </a>
         
@@ -175,24 +180,31 @@
 <p>链接:<a href="https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg</a>  密码:wj0r</p>
 <h3 id="3-运行emsdk-env-bat，自动配置环境变量"><a href="#3-运行emsdk-env-bat，自动配置环境变量" class="headerlink" title="3.运行emsdk_env.bat，自动配置环境变量"></a>3.运行emsdk_env.bat，自动配置环境变量</h3><h3 id="4-验证结果"><a href="#4-验证结果" class="headerlink" title="4.验证结果"></a>4.验证结果</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">emcc -v</span></span><br></pre></td></tr></table></figure>
 
-<p>输出如下则环境准备成功<br>[image:711A9A6F-B37C-4D1A-8E47-863375E59550-828-0000006ABFF6414B/1.png]</p>
+<p>输出如下则环境准备成功</p>
+<img src="/2020/01/30/assembly-helloworld-C/1.png" class title="This is 1.png">
+
+
 <h1 id="二、C-程序准备"><a href="#二、C-程序准备" class="headerlink" title="二、C++程序准备"></a>二、C++程序准备</h1><p>准备C++程序，以hello world为例</p>
 <h3 id="1-安装vs2019"><a href="#1-安装vs2019" class="headerlink" title="1.安装vs2019"></a>1.安装vs2019</h3><h3 id="2-新建项目，编写hello-cpp，内容如下"><a href="#2-新建项目，编写hello-cpp，内容如下" class="headerlink" title="2.新建项目，编写hello.cpp，内容如下"></a>2.新建项目，编写hello.cpp，内容如下</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">	  <span class="built_in">cout</span> &lt;&lt; <span class="string">"hello world"</span>;</span><br><span class="line">	  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="三、将C-程序编译为WebAssembly，并输出为html"><a href="#三、将C-程序编译为WebAssembly，并输出为html" class="headerlink" title="三、将C++程序编译为WebAssembly，并输出为html"></a>三、将C++程序编译为WebAssembly，并输出为html</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emcc hello.cpp -s <span class="attribute">WASM</span>=1 -o hello.html</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>-如需编译为WebAssembly（.wasm文件），则需指定 -s WASM=1 参数；无参则默认编译为asm.js（Javascript代码）</li>
+<li>如需编译为WebAssembly（.wasm文件），则需指定 -s WASM=1 参数；无参则默认编译为asm.js（Javascript代码）</li>
 </ul>
-<p>编译完成后，该目录将新增如下文件：<br>[image:18BBAF73-73B4-46A2-AE57-E2EC7239AB39-828-0000007197EEEDD6/2.png]</p>
+<p>编译完成后，该目录将新增如下文件：</p>
+<img src="/2020/01/30/assembly-helloworld-C/2.png" class title="This is 2.png">
+
 <h1 id="四、启动http的web服务，使html运行其上"><a href="#四、启动http的web服务，使html运行其上" class="headerlink" title="四、启动http的web服务，使html运行其上"></a>四、启动http的web服务，使html运行其上</h1><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emrun —no_browser —port 8080 C:<span class="symbol">\U</span>sers<span class="symbol">\r</span>ao<span class="symbol">\s</span>ource<span class="symbol">\r</span>epos<span class="symbol">\h</span>ello<span class="symbol">\h</span>ello<span class="symbol">\h</span>ello.html</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>-参数需指定html文件全路径</li>
+<li>参数需指定html文件全路径</li>
 </ul>
-<p>服务启动成功页面：<br>[image:EE6D5FF8-AD2E-4482-9584-77B478B78D1A-828-000000AEC47B5244/3.png]</p>
-<h1 id="四、访问网页"><a href="#四、访问网页" class="headerlink" title="四、访问网页"></a>四、访问网页</h1><p>访问 <a href="http://localhost:8080/hello.html" target="_blank" rel="noopener">http://localhost:8080/hello.html</a> ，结果如下，即成功在Web端运行C/C++程序<br>[image:FC164BD5-6BC3-466F-B786-98E7192BBE4F-828-000000A9FA4DF690/4.png]</p>
+<p>服务启动成功页面：</p>
+<img src="/2020/01/30/assembly-helloworld-C/3.png" class title="This is 3.png">
 
+<h1 id="四、访问网页"><a href="#四、访问网页" class="headerlink" title="四、访问网页"></a>四、访问网页</h1><p>访问 <a href="http://localhost:8080/hello.html" target="_blank" rel="noopener">http://localhost:8080/hello.html</a> ，结果如下，即成功在Web端运行C/C++程序</p>
+<img src="/2020/01/30/assembly-helloworld-C/4.png" class title="This is 4.png">
       
 
       
@@ -250,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2020/01/30/assembly-helloworld/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2020/01/30/assembly-helloworld-C/" alt="微信分享二维码">
     </div>
 </div>
 
