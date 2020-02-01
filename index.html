@@ -61,13 +61,13 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" >所有文章</a>
     			
             
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" >关于我</a>
     			
             
 		</nav>
@@ -168,7 +168,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="一、虚拟机运行模式"><a href="#一、虚拟机运行模式" class="headerlink" title="一、虚拟机运行模式"></a>一、虚拟机运行模式</h1><p>以HotSpot为代表的主流商用虚拟机为例，HotSpot同时包含解释器和编译器。当程序需迅速启动并执行时，首先通过解释器进行解释执行，逐行生成机器码；待程序运行后，再通过JIT编译器进行编译执行，针对热点代码进行优化并一次性生成机器码。</p>
+<h1 id="一、虚拟机运行模式"><a href="#一、虚拟机运行模式" class="headerlink" title="一、虚拟机运行模式"></a>一、虚拟机运行模式</h1><p>以HotSpot为代表的主流商用虚拟机为例，HotSpot同时包含解释器和编译器。当程序需迅速启动并执行时，首先通过解释器进行解释执行，即逐行生成机器码的同时逐行执行；待程序运行后，再通过JIT编译器进行编译执行，即针对热点代码进行优化，一次性生成全部机器码后再执行。</p>
 <h2 id="（一）何为热点代码"><a href="#（一）何为热点代码" class="headerlink" title="（一）何为热点代码"></a>（一）何为热点代码</h2><p>调用频率较高的方法与执行频率较高的循环体。</p>
 <h2 id="（二）主流热点探测方式"><a href="#（二）主流热点探测方式" class="headerlink" title="（二）主流热点探测方式"></a>（二）主流热点探测方式</h2>
         
