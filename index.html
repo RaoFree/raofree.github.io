@@ -147,6 +147,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LLVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/01/LLVM/">LLVM架构编译器学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/01/LLVM/" class="archive-article-date">
+  	<time datetime="2020-02-01T12:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="一、虚拟机运行模式"><a href="#一、虚拟机运行模式" class="headerlink" title="一、虚拟机运行模式"></a>一、虚拟机运行模式</h1><p>以HotSpot为代表的主流商用虚拟机为例，HotSpot同时包含解释器和编译器。当程序需迅速启动并执行时，首先通过解释器进行解释执行，逐行生成机器码；待程序运行后，再通过JIT编译器进行编译执行，针对热点代码进行优化并一次性生成机器码。</p>
+<h2 id="（一）何为热点代码"><a href="#（一）何为热点代码" class="headerlink" title="（一）何为热点代码"></a>（一）何为热点代码</h2><p>调用频率较高的方法与执行频率较高的循环体。</p>
+<h2 id="（二）主流热点探测方式"><a href="#（二）主流热点探测方式" class="headerlink" title="（二）主流热点探测方式"></a>（二）主流热点探测方式</h2>
+        
+          <a class="article-more-a" href="/2020/02/01/LLVM/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/01/LLVM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-assembly-helloworld-C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -167,7 +235,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>环境：win10</p>
+        <hr>
+<p>环境：win10</p>
 <h1 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h1><p>安装Emscripten编译器，用于将C++程序编译为WebAssembly字节码</p>
 <h3 id="1-安装python-2-7-15-amd64-msi"><a href="#1-安装python-2-7-15-amd64-msi" class="headerlink" title="1.安装python-2.7.15.amd64.msi"></a>1.安装python-2.7.15.amd64.msi</h3><p>链接:<a href="https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg" target="_blank" rel="noopener">https://pan.baidu.com/s/1ysY-XNtdpCs2Lg9XS8HDhg</a>  密码:wj0r</p>
 <h3 id="2-安装emsdk-1-35-0-full-64bit-exe"><a href="#2-安装emsdk-1-35-0-full-64bit-exe" class="headerlink" title="2.安装emsdk-1.35.0-full-64bit.exe"></a>2.安装emsdk-1.35.0-full-64bit.exe</h3>
@@ -300,7 +369,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>环境：CentOS 7</p>
+        <hr>
+<p>环境：CentOS 7</p>
 <h1 id="一、安装Docker"><a href="#一、安装Docker" class="headerlink" title="一、安装Docker"></a>一、安装Docker</h1><h3 id="1-查看内核版本"><a href="#1-查看内核版本" class="headerlink" title="1.查看内核版本"></a>1.查看内核版本</h3><p>Docker 要求 CentOS 系统的内核版本高于 3.10</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname -r</span></span><br></pre></td></tr></table></figure>
 <p>[image:5A8F2B2B-0FEA-4453-A7E1-EB67D442AC35-16891-00009B57C7D47126/5ECBA7A9-B9EB-4B96-8D64-D16ABF20116D.png]</p>
@@ -369,7 +439,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
+        <hr>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
 <li><p>修改用户所属组</p>
 <figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd <span class="keyword">group</span>Name</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g <span class="keyword">group</span>Name <span class="keyword">user</span>Name</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups <span class="keyword">user</span>Name</span><br></pre></td></tr></table></figure>
 </li>

@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.raofree.cn">
-  <title>Linux常用操作 | RaoFree&#39;s Blog</title>
+  <title>LLVM架构编译器学习笔记 | RaoFree&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R use">
+  <meta name="description" content="一、虚拟机运行模式以HotSpot为代表的主流商用虚拟机为例，HotSpot同时包含解释器和编译器。当程序需迅速启动并执行时，首先通过解释器进行解释执行，逐行生成机器码；待程序运行后，再通过JIT编译器进行编译执行，针对热点代码进行优化并一次性生成机器码。 （一）何为热点代码调用频率较高的方法与执行频率较高的循环体。 （二）主流热点探测方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux常用操作">
-<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2018&#x2F;01&#x2F;10&#x2F;RaoFree-s-Blog&#x2F;index.html">
+<meta property="og:title" content="LLVM架构编译器学习笔记">
+<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;01&#x2F;LLVM&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
-<meta property="og:description" content="基本操作 修改用户所属组 123456&#x2F;&#x2F;添加组groupadd groupName&#x2F;&#x2F;为用户指定组usermod -g groupName userName&#x2F;&#x2F;验证显示用户所属组groups userName  更改文件&#x2F;目录属主属组 1234&#x2F;&#x2F;更改文件属主属组chown userName:groupName fileName&#x2F;&#x2F;递归更改目录属主属组（目录结尾无需&#x2F;）chown -R use">
+<meta property="og:description" content="一、虚拟机运行模式以HotSpot为代表的主流商用虚拟机为例，HotSpot同时包含解释器和编译器。当程序需迅速启动并执行时，首先通过解释器进行解释执行，逐行生成机器码；待程序运行后，再通过JIT编译器进行编译执行，针对热点代码进行优化并一次性生成机器码。 （一）何为热点代码调用频率较高的方法与执行频率较高的循环体。 （二）主流热点探测方式">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-01T12:07:15.230Z">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;01&#x2F;LLVM&#x2F;llvm.png">
+<meta property="og:updated_time" content="2020-02-01T12:18:26.105Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;01&#x2F;LLVM&#x2F;llvm.png">
   
     <link rel="alternative" href="/atom.xml" title="RaoFree&#39;s Blog" type="application/atom+xml">
   
@@ -148,20 +150,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-RaoFree-s-Blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LLVM" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Linux常用操作
+      LLVM架构编译器学习笔记
     </h1>
   
 
         
-        <a href="/2018/01/10/RaoFree-s-Blog/" class="archive-article-date">
-  	<time datetime="2018-01-10T11:14:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+        <a href="/2020/02/01/LLVM/" class="archive-article-date">
+  	<time datetime="2020-02-01T12:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
 </a>
         
       </header>
@@ -169,90 +171,34 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><ol>
-<li><p>修改用户所属组</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//添加组</span><br><span class="line">groupadd <span class="keyword">group</span>Name</span><br><span class="line">//为用户指定组</span><br><span class="line">usermod -g <span class="keyword">group</span>Name <span class="keyword">user</span>Name</span><br><span class="line">//验证显示用户所属组</span><br><span class="line">groups <span class="keyword">user</span>Name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改文件/目录属主属组</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更改文件属主属组</span></span><br><span class="line">chown <span class="string">userName:</span>groupName fileName</span><br><span class="line"><span class="comment">//递归更改目录属主属组（目录结尾无需/）</span></span><br><span class="line">chown -R <span class="string">userName:</span>groupName dirName</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-</li>
-<li><p>递归更改目录权限</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R <span class="number">775</span> dirName</span><br></pre></td></tr></table></figure>
-<p>￼ </p>
-</li>
-<li><p>压缩/解压</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-cvf</span> <span class="selector-tag">filename</span><span class="selector-class">.tar</span> <span class="selector-tag">dir</span></span><br><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">filename</span><span class="selector-class">.tar</span> <span class="selector-tag">-C</span> <span class="selector-tag">dir</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除文件</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//除指定文件外，全部删除</span></span><br><span class="line"><span class="keyword">rm</span> -rf !()</span><br><span class="line"><span class="keyword">ls</span> |grep -v [filename] |xargs <span class="keyword">rm</span> -rf</span><br><span class="line"><span class="comment">//当目录下文件过多，使用以下方式删除</span></span><br><span class="line">find . -name “*” -<span class="keyword">print</span>|xargs <span class="keyword">rm</span> -rf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>统计当前目录下的文件个数</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//含子文件夹</span></span><br><span class="line">ls -lR<span class="string">|grep “^-“|wc -l</span></span><br><span class="line"><span class="comment">//不含子文件夹</span></span><br><span class="line">ls -l<span class="string">|grep “^-“|wc -l</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>统计当前目录下的文件夹个数</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l|<span class="type">grep</span> “^d”|<span class="type">wc</span> -l</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><ol>
-<li><p>统计文件行数</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">wc -l filename</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除文件行</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-10行</span></span><br><span class="line">sed -i ‘<span class="number">1</span>,<span class="number">10</span>d’ filename</span><br><span class="line"><span class="comment">//2-9行，不含上下界(1，10)</span></span><br><span class="line">cut -b <span class="number">-1</span>,<span class="number">10</span>- filename  </span><br><span class="line"><span class="comment">//最后一行</span></span><br><span class="line">sed -i ‘$d’ filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>替换文件中的字符串</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i ‘s<span class="regexp">/old/</span><span class="keyword">new</span><span class="regexp">/g’ filename</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对文件中的指定列（如列1，列2）进行提取</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d”分隔符” -f1,<span class="number">2</span> sourcefile &gt;&gt; directfile</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>按行切分文件</p>
-<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">split</span> -l linecount <span class="keyword">filename</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件行级去重</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//统计文件中每行内容的重复次数</span></span><br><span class="line"><span class="keyword">sort</span> filename |uniq -c </span><br><span class="line"><span class="comment">//去除文件中的重复行</span></span><br><span class="line">awk ‘!x[$0]++’ beforeFilename&gt;&gt;afterFilename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件格式（dos/unix）转换</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi filename</span><br><span class="line">:<span class="builtin-name">set</span> <span class="attribute">fileformat</span>=unix</span><br><span class="line">:<span class="builtin-name">set</span> <span class="attribute">fileformat</span>=dos</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>后台执行脚本并将结果输出至文件</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行后控制台将显示进程号</span></span><br><span class="line">nohup ./filename &gt;&gt;resultFilename <span class="meta">&amp;</span></span><br><span class="line"><span class="comment">//确认该进程是否正在后台运行</span></span><br><span class="line">ps aux<span class="string">|grep pid</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h1 id="机器信息类操作"><a href="#机器信息类操作" class="headerlink" title="机器信息类操作"></a>机器信息类操作</h1><ol>
-<li><p>查看ip</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ip addr</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看操作系统版本</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/etc/i</span>ssue</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看内存使用情况</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> /<span class="meta">proc</span>/meminfo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看当前目录占用空间</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//详细信息</span></span><br><span class="line">du -a</span><br><span class="line"><span class="comment">//按分区</span></span><br><span class="line">du -h</span><br><span class="line"><span class="comment">//总占用空间</span></span><br><span class="line">du -s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看占用端口的进程号（最后一列）</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlp<span class="string">|grep port</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看使用某文件的进程号</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof|grep <span class="meta">filename</span></span><br><span class="line">fuser -m -v <span class="meta">filename</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>永久修改ip</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>sysconfig<span class="regexp">/network/i</span>fcfg-eth-id-XXX</span><br><span class="line">修改IPADDR项的值</span><br><span class="line">重启机器生效</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>永久修改主机名</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>hosts</span><br><span class="line">vim <span class="regexp">/etc/</span>HOSTNAME</span><br><span class="line">重启生效</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>永久修改dns</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> /etc/resolv.<span class="keyword">conf</span></span><br><span class="line">￼修改nameserver项的值</span><br><span class="line">立即生效</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置NAS开机自动挂载</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">NAS   挂载目录   文件系统   defaults   <span class="number">0</span>   <span class="number">0</span></span><br></pre></td></tr></table></figure></li>
-</ol>
+<h1 id="一、虚拟机运行模式"><a href="#一、虚拟机运行模式" class="headerlink" title="一、虚拟机运行模式"></a>一、虚拟机运行模式</h1><p>以HotSpot为代表的主流商用虚拟机为例，HotSpot同时包含解释器和编译器。当程序需迅速启动并执行时，首先通过解释器进行解释执行，逐行生成机器码；待程序运行后，再通过JIT编译器进行编译执行，针对热点代码进行优化并一次性生成机器码。</p>
+<h2 id="（一）何为热点代码"><a href="#（一）何为热点代码" class="headerlink" title="（一）何为热点代码"></a>（一）何为热点代码</h2><p>调用频率较高的方法与执行频率较高的循环体。</p>
+<h2 id="（二）主流热点探测方式"><a href="#（二）主流热点探测方式" class="headerlink" title="（二）主流热点探测方式"></a>（二）主流热点探测方式</h2><a id="more"></a>
+<h3 id="1-基于采样"><a href="#1-基于采样" class="headerlink" title="1.基于采样"></a>1.基于采样</h3><p>虚拟机周期性地检查各个线程的栈顶，经常出现在栈顶的方法为“热点方法”，将触发JIT编译。<br>该方法简单、易获取方法调用关系，但无法精确统计频率。</p>
+<h3 id="2-基于计数器（HotSpot使用）"><a href="#2-基于计数器（HotSpot使用）" class="headerlink" title="2.基于计数器（HotSpot使用）"></a>2.基于计数器（HotSpot使用）</h3><p>虚拟机为每个方法建立方法计数器、为每个循环体建立回边计数器，统计执行次数。如执行次数超过阈值则为“热点方法”，将触发JIT编译。该方法复杂、无法获取方法调用关系，但可精确统计频率。</p>
+<h2 id="（三）为何JIT编译器仅针对热点代码进行优化编译"><a href="#（三）为何JIT编译器仅针对热点代码进行优化编译" class="headerlink" title="（三）为何JIT编译器仅针对热点代码进行优化编译"></a>（三）为何JIT编译器仅针对热点代码进行优化编译</h2><h3 id="1-原因一：执行速度"><a href="#1-原因一：执行速度" class="headerlink" title="1.原因一：执行速度"></a>1.原因一：执行速度</h3><p>方法与循环体经JIT编译后得到机器码，再次调用时无需编译，可直接执行机器码，速度大幅提升。但在调用频率较低时，首次编译的开销仍无法被抵消忽略。</p>
+<h3 id="2-原因二：内存开销"><a href="#2-原因二：内存开销" class="headerlink" title="2.原因二：内存开销"></a>2.原因二：内存开销</h3><p>编译后，机器码相对于中间代码IR将膨胀至10倍大小，内存开销较大，因此JIT编译不适用于全部中间代码IR。</p>
+<h2 id="（四）HotSpot虚拟机在JDK1-7后的默认运行模式——分层编译（Tiered-Compilation）"><a href="#（四）HotSpot虚拟机在JDK1-7后的默认运行模式——分层编译（Tiered-Compilation）" class="headerlink" title="（四）HotSpot虚拟机在JDK1.7后的默认运行模式——分层编译（Tiered Compilation）"></a>（四）HotSpot虚拟机在JDK1.7后的默认运行模式——分层编译（Tiered Compilation）</h2><h3 id="1-首先解释执行（第0层）"><a href="#1-首先解释执行（第0层）" class="headerlink" title="1.首先解释执行（第0层）"></a>1.首先解释执行（第0层）</h3><p>解释器不开启性能监控功能。</p>
+<h3 id="2-对于热点代码"><a href="#2-对于热点代码" class="headerlink" title="2.对于热点代码"></a>2.对于热点代码</h3><p>（1）先进行C1编译（第1层 Client Compiler）<br>将中间代码IR编译为机器码，简单的局部优化，性能监控功能可选，以提升启动与执行速度。</p>
+<p>（2）而后进行C2编译（第2层 Server Compiler）<br>将中间代码IR编译为机器码，耗时较长的全局优化，甚至根据性能监控信息进行激进优化，以提升优化效果。当激进优化假设不成立时，可通过逆优化（Deoptimization）退回到解释执行。</p>
+<p>综上，同一代码可能被C1、C2多次编译。</p>
+<h1 id="二、编译器架构"><a href="#二、编译器架构" class="headerlink" title="二、编译器架构"></a>二、编译器架构</h1><h2 id="（一）传统编译器"><a href="#（一）传统编译器" class="headerlink" title="（一）传统编译器"></a>（一）传统编译器</h2><p>分为三个阶段</p>
+<h3 id="1-前端（Frontend）"><a href="#1-前端（Frontend）" class="headerlink" title="1.前端（Frontend）"></a>1.前端（Frontend）</h3><p>（1）输入：源代码<br>（2）操作：通过词法分析、语法分析、语义分析，构建针对语言的抽象语法树（AST），并生成中间代码IR<br>（3）输出：中间代码IR</p>
+<h3 id="2-优化器（Optimizer）"><a href="#2-优化器（Optimizer）" class="headerlink" title="2.优化器（Optimizer）"></a>2.优化器（Optimizer）</h3><h3 id="3-后端（Backend）"><a href="#3-后端（Backend）" class="headerlink" title="3.后端（Backend）"></a>3.后端（Backend）</h3><p>（1）输入：中间代码IR<br>（2）通过解释执行或编译执行的方式，生成机器码<br>（3）输出：机器码</p>
+<h2 id="（二）LLVM架构的编译器"><a href="#（二）LLVM架构的编译器" class="headerlink" title="（二）LLVM架构的编译器"></a>（二）LLVM架构的编译器</h2><p>广义指LLVM编译器架构，包括前端、后端（含优化器）、库函数及模块；狭义指LLVM编译器架构的后端。<br>优于传统编译器的特点：不同的源代码语言，均能对应于同一种LLVM的中间代码LLVM IR（intermediate representation）。</p>
+<h3 id="1-LLVM架构的前端"><a href="#1-LLVM架构的前端" class="headerlink" title="1.LLVM架构的前端"></a>1.LLVM架构的前端</h3><p>通过词法分析、语法分析、语义分析，构建针对语言的抽象语法树（AST），并生成LLVM IR。</p>
+<p>（1）主流前端GCC<br>GNU编译器，采用GPL协议，是多数开源软件的默认编译器，存在模块化程度低、与IDE配合较差的缺点。</p>
+<p>（2）主流前端Clang<br>采用BSD协议，基于编译器后端LLVM，相比于GCC更轻量、编译速度更快、占用内存更小。</p>
+<h3 id="2-LLVM架构的后端"><a href="#2-LLVM架构的后端" class="headerlink" title="2.LLVM架构的后端"></a>2.LLVM架构的后端</h3><p>（1）优化器<br>只对LLVM IR进行优化。</p>
+<p>（2）主流后端LLVM<br>将优化好的LLVM IR翻译为对应硬件平台的机器码。其中，生成机器码的方式有两种：</p>
+<blockquote>
+<p>A.解释执行<br>解释器将LLVM IR逐行翻译为机器码，同时逐行执行。生成的机器码不保存，因此无法复用。一次解释过程的耗时小于一次编译过程的耗时。</p>
+</blockquote>
+<blockquote>
+<p>B.JIT编译执行（Just In Time Compiler，即时编译器）<br>JIT编译器将LLVM IR一次性翻译为机器码并保存至内存中。再次调用相同方法时，可直接执行已保存的机器码。当直接执行内存中已保存的机器码时，耗时非常小。</p>
+</blockquote>
+<h3 id="3-Clang与LLVM的关系"><a href="#3-Clang与LLVM的关系" class="headerlink" title="3.Clang与LLVM的关系"></a>3.Clang与LLVM的关系</h3><p>Clang、LLVM是LLVM架构编译器的前端、后端组件。</p>
+<img src="/2020/02/01/LLVM/llvm.png" class title="This is llvm.png">
 
       
 
@@ -311,7 +257,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2018/01/10/RaoFree-s-Blog/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2020/02/01/LLVM/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,15 +271,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/07/what/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          用Docker搭建DNS服务器
-        
-      </div>
-    </a>
   
+    <a href="/2020/01/30/assembly-helloworld-C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Win10下，将C++编译为WebAssembly并在Web端运行</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -358,7 +300,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本操作"><span class="toc-number">1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">2.</span> <span class="toc-text">文件操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#机器信息类操作"><span class="toc-number">3.</span> <span class="toc-text">机器信息类操作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、虚拟机运行模式"><span class="toc-number">1.</span> <span class="toc-text">一、虚拟机运行模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（一）何为热点代码"><span class="toc-number">1.1.</span> <span class="toc-text">（一）何为热点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（二）主流热点探测方式"><span class="toc-number">1.2.</span> <span class="toc-text">（二）主流热点探测方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基于采样"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.基于采样</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-基于计数器（HotSpot使用）"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.基于计数器（HotSpot使用）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（三）为何JIT编译器仅针对热点代码进行优化编译"><span class="toc-number">1.3.</span> <span class="toc-text">（三）为何JIT编译器仅针对热点代码进行优化编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原因一：执行速度"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.原因一：执行速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-原因二：内存开销"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.原因二：内存开销</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（四）HotSpot虚拟机在JDK1-7后的默认运行模式——分层编译（Tiered-Compilation）"><span class="toc-number">1.4.</span> <span class="toc-text">（四）HotSpot虚拟机在JDK1.7后的默认运行模式——分层编译（Tiered Compilation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-首先解释执行（第0层）"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.首先解释执行（第0层）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对于热点代码"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.对于热点代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、编译器架构"><span class="toc-number">2.</span> <span class="toc-text">二、编译器架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（一）传统编译器"><span class="toc-number">2.1.</span> <span class="toc-text">（一）传统编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前端（Frontend）"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.前端（Frontend）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-优化器（Optimizer）"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.优化器（Optimizer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-后端（Backend）"><span class="toc-number">2.1.3.</span> <span class="toc-text">3.后端（Backend）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（二）LLVM架构的编译器"><span class="toc-number">2.2.</span> <span class="toc-text">（二）LLVM架构的编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-LLVM架构的前端"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.LLVM架构的前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LLVM架构的后端"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.LLVM架构的后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Clang与LLVM的关系"><span class="toc-number">2.2.3.</span> <span class="toc-text">3.Clang与LLVM的关系</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
