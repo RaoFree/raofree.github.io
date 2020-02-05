@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.raofree.cn">
-  <title>Archives: 2020/1 | RaoFree&#39;s Blog</title>
+  <title>WebAssembly学习笔记（二）初步理解WebAssembly | RaoFree&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RaoFree&#39;s Blog">
-<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;archives&#x2F;2020&#x2F;01&#x2F;index.html">
+  <meta name="description" content="一、WebAssembly定义WebAssembly是一种可以在浏览器中执行的二进制字节码，目前大多新版本主流浏览器已支持WebAssembly。由于WebAssembly与机器码相似，因此相对于JavaScript加载执行效率更佳。WebAssembly适用于需要大量计算的场景，如：音视频处理，游戏开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebAssembly学习笔记（二）初步理解WebAssembly">
+<meta property="og:url" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;05&#x2F;WebAssemblyIntro&#x2F;index.html">
 <meta property="og:site_name" content="RaoFree&#39;s Blog">
+<meta property="og:description" content="一、WebAssembly定义WebAssembly是一种可以在浏览器中执行的二进制字节码，目前大多新版本主流浏览器已支持WebAssembly。由于WebAssembly与机器码相似，因此相对于JavaScript加载执行效率更佳。WebAssembly适用于需要大量计算的场景，如：音视频处理，游戏开发。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;05&#x2F;WebAssemblyIntro&#x2F;history.png">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;05&#x2F;WebAssemblyIntro&#x2F;1.png">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;05&#x2F;WebAssemblyIntro&#x2F;2.png">
+<meta property="og:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;05&#x2F;WebAssemblyIntro&#x2F;3.png">
+<meta property="og:updated_time" content="2020-02-05T10:44:45.608Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="&#x2F;&#x2F;blog.raofree.cn&#x2F;2020&#x2F;02&#x2F;05&#x2F;WebAssemblyIntro&#x2F;history.png">
   
     <link rel="alternative" href="/atom.xml" title="RaoFree&#39;s Blog" type="application/atom+xml">
   
@@ -145,49 +153,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-WebAssemblyIntro" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/30/assembly-helloworld-C/" class="archive-article-date">
-  	<time datetime="2020-01-30T11:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/30/assembly-helloworld-C/">WebAssembly学习笔记（一）Win10下，将C++编译为WebAssembly并在Web端运行</a>
+    <h1 class="article-title" itemprop="name">
+      WebAssembly学习笔记（二）初步理解WebAssembly
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2020/02/05/WebAssemblyIntro/" class="archive-article-date">
+  	<time datetime="2020-02-05T10:31:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="一、WebAssembly定义"><a href="#一、WebAssembly定义" class="headerlink" title="一、WebAssembly定义"></a>一、WebAssembly定义</h1><p>WebAssembly是一种可以在浏览器中执行的二进制字节码，目前大多新版本主流浏览器已支持WebAssembly。由于WebAssembly与机器码相似，因此相对于JavaScript加载执行效率更佳。WebAssembly适用于需要大量计算的场景，如：音视频处理，游戏开发。</p>
+<a id="more"></a>
+<h1 id="二、使用方式"><a href="#二、使用方式" class="headerlink" title="二、使用方式"></a>二、使用方式</h1><h2 id="（一）由AssemblyScript（最佳实践）、C-C-（官方推荐）、TypeScript、kotlin、GoLang、Rust（不推荐）等强类型高级语言编译为WebAssembly。"><a href="#（一）由AssemblyScript（最佳实践）、C-C-（官方推荐）、TypeScript、kotlin、GoLang、Rust（不推荐）等强类型高级语言编译为WebAssembly。" class="headerlink" title="（一）由AssemblyScript（最佳实践）、C/C++（官方推荐）、TypeScript、kotlin、GoLang、Rust（不推荐）等强类型高级语言编译为WebAssembly。"></a>（一）由AssemblyScript（最佳实践）、C/C++（官方推荐）、TypeScript、kotlin、GoLang、Rust（不推荐）等强类型高级语言编译为WebAssembly。</h2><h3 id="1-编译器工具"><a href="#1-编译器工具" class="headerlink" title="1.编译器工具"></a>1.编译器工具</h3><p>（1）Emscripten编译器<br>基于LLVM开发，前端编译器Clang将C、C++翻译为中间代码LLVM IR，后端编译器Fastcomp将LLVM IR翻译为asm.js（JavaScript），甚至再翻译为wasm（WebAssembly）。</p>
+<p>（2）Binaryen编译器<br>例如可将AssemblyScript编译为wasm（WebAssembly）。</p>
+<h2 id="（二）在JavaScript代码中调用WebAssembly函数"><a href="#（二）在JavaScript代码中调用WebAssembly函数" class="headerlink" title="（二）在JavaScript代码中调用WebAssembly函数"></a>（二）在JavaScript代码中调用WebAssembly函数</h2><h2 id="（三）在WebAssembly代码中调用JavaScript函数"><a href="#（三）在WebAssembly代码中调用JavaScript函数" class="headerlink" title="（三）在WebAssembly代码中调用JavaScript函数"></a>（三）在WebAssembly代码中调用JavaScript函数</h2><h1 id="三、前端性能提升历程"><a href="#三、前端性能提升历程" class="headerlink" title="三、前端性能提升历程"></a>三、前端性能提升历程</h1><p>￼<img src="/2020/02/05/WebAssemblyIntro/history.png" class title="This is history.png"></p>
+<h1 id="四、WebAssembly的工作原理"><a href="#四、WebAssembly的工作原理" class="headerlink" title="四、WebAssembly的工作原理"></a>四、WebAssembly的工作原理</h1><h2 id="（一）传统浏览器JS引擎的工作原理（处理JavaScript脚本的虚拟机）"><a href="#（一）传统浏览器JS引擎的工作原理（处理JavaScript脚本的虚拟机）" class="headerlink" title="（一）传统浏览器JS引擎的工作原理（处理JavaScript脚本的虚拟机）"></a>（一）传统浏览器JS引擎的工作原理（处理JavaScript脚本的虚拟机）</h2><h3 id="1-编译器前端"><a href="#1-编译器前端" class="headerlink" title="1.编译器前端"></a>1.编译器前端</h3><p>将高级语言翻译为中间代码IR</p>
+<h3 id="2-编译器后端"><a href="#2-编译器后端" class="headerlink" title="2.编译器后端"></a>2.编译器后端</h3><p>最初仅包含解释器，后来加入JIT编译器形成混合模式，负责将中间代码IR翻译为特定CPU架构（X86、AMD64、ARM等）的机器码。<br>￼￼<img src="/2020/02/05/WebAssemblyIntro/1.png" class title="This is 1.png"></p>
+<blockquote>
+<p>扩展：JIT编译器工作原理<br>JS引擎通过监视器监控运行信息，根据方法及循环体的执行频率区分为warm/hot。其中，warm代码由基线编译器进行局部优化编译；hot代码由优化编译器根据监视器信息进行优化假设编译，并在执行前进行优化假设检查，如假设正确则执行，假设错误则去优化（丢弃优化代码、回到解释执行/基线编译器执行）。</p>
+</blockquote>
+<h2 id="（二）WebAssembly的工作原理及使用方式详解"><a href="#（二）WebAssembly的工作原理及使用方式详解" class="headerlink" title="（二）WebAssembly的工作原理及使用方式详解"></a>（二）WebAssembly的工作原理及使用方式详解</h2><h3 id="1-方式一：使用LLVM架构的编译器，将强类型高级语言编译为WebAssembly"><a href="#1-方式一：使用LLVM架构的编译器，将强类型高级语言编译为WebAssembly" class="headerlink" title="1.方式一：使用LLVM架构的编译器，将强类型高级语言编译为WebAssembly"></a>1.方式一：使用LLVM架构的编译器，将强类型高级语言编译为WebAssembly</h3><p>（1）前端编译器将高级语言翻译为中间代码LLVM IR<br>（2）后端编译器将LLVM IR翻译为asm.js（JavaScript）<br>（3）后端编译器将asm.js翻译为wasm（WebAssembly）<br>（4）后端编译器将wasm翻译为特定CPU架构（X86、AMD64、ARM等）的机器码<br>￼￼￼<img src="/2020/02/05/WebAssemblyIntro/2.png" class title="This is 2.png"></p>
+<h3 id="2-方式二：在JavaScript代码中调用WebAssembly函数"><a href="#2-方式二：在JavaScript代码中调用WebAssembly函数" class="headerlink" title="2.方式二：在JavaScript代码中调用WebAssembly函数"></a>2.方式二：在JavaScript代码中调用WebAssembly函数</h3><p>由于WebAssembly的参数类型/返回值类型仅可为整型/浮点型，因此在其他类型变量的处理上，WebAssembly将通过地址指针手动操作内存。</p>
+<p>【例】在JavaScript代码中，将String类型字符串传递给WebAssembly函数时，由于参数类型限制，可将String字符串转换为JavaScript的ArrayBuffer字节数组写入内存，并将ArrayBuffer数组的首元素地址（整型）作为指针参数传递给WebAssembly函数。</p>
+<h1 id="五、JavaScript与WebAssembly的处理阶段对比"><a href="#五、JavaScript与WebAssembly的处理阶段对比" class="headerlink" title="五、JavaScript与WebAssembly的处理阶段对比"></a>五、JavaScript与WebAssembly的处理阶段对比</h1><p>下表各处理阶段通常交叉进行：</p>
+<p>￼￼￼<img src="/2020/02/05/WebAssemblyIntro/3.png" class title="This is 3.png"></p>
+<h1 id="六、WebAssembly存在的问题"><a href="#六、WebAssembly存在的问题" class="headerlink" title="六、WebAssembly存在的问题"></a>六、WebAssembly存在的问题</h1><h2 id="（一）无法直接操作-DOM"><a href="#（一）无法直接操作-DOM" class="headerlink" title="（一）无法直接操作 DOM"></a>（一）无法直接操作 DOM</h2><p>WebAssembly只能通过调用JavaScript函数的方式间接操作DOM，效率较低。</p>
+<h2 id="（二）不包含异常处理"><a href="#（二）不包含异常处理" class="headerlink" title="（二）不包含异常处理"></a>（二）不包含异常处理</h2><h2 id="（三）无自动垃圾回收机制"><a href="#（三）无自动垃圾回收机制" class="headerlink" title="（三）无自动垃圾回收机制"></a>（三）无自动垃圾回收机制</h2>
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.raofree.cn/2020/02/05/WebAssemblyIntro/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/02/01/LLVM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WebAssembly学习笔记（二）LLVM架构编译器学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、WebAssembly定义"><span class="toc-number">1.</span> <span class="toc-text">一、WebAssembly定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、使用方式"><span class="toc-number">2.</span> <span class="toc-text">二、使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（一）由AssemblyScript（最佳实践）、C-C-（官方推荐）、TypeScript、kotlin、GoLang、Rust（不推荐）等强类型高级语言编译为WebAssembly。"><span class="toc-number">2.1.</span> <span class="toc-text">（一）由AssemblyScript（最佳实践）、C/C++（官方推荐）、TypeScript、kotlin、GoLang、Rust（不推荐）等强类型高级语言编译为WebAssembly。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-编译器工具"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.编译器工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（二）在JavaScript代码中调用WebAssembly函数"><span class="toc-number">2.2.</span> <span class="toc-text">（二）在JavaScript代码中调用WebAssembly函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（三）在WebAssembly代码中调用JavaScript函数"><span class="toc-number">2.3.</span> <span class="toc-text">（三）在WebAssembly代码中调用JavaScript函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、前端性能提升历程"><span class="toc-number">3.</span> <span class="toc-text">三、前端性能提升历程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、WebAssembly的工作原理"><span class="toc-number">4.</span> <span class="toc-text">四、WebAssembly的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（一）传统浏览器JS引擎的工作原理（处理JavaScript脚本的虚拟机）"><span class="toc-number">4.1.</span> <span class="toc-text">（一）传统浏览器JS引擎的工作原理（处理JavaScript脚本的虚拟机）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-编译器前端"><span class="toc-number">4.1.1.</span> <span class="toc-text">1.编译器前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-编译器后端"><span class="toc-number">4.1.2.</span> <span class="toc-text">2.编译器后端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（二）WebAssembly的工作原理及使用方式详解"><span class="toc-number">4.2.</span> <span class="toc-text">（二）WebAssembly的工作原理及使用方式详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-方式一：使用LLVM架构的编译器，将强类型高级语言编译为WebAssembly"><span class="toc-number">4.2.1.</span> <span class="toc-text">1.方式一：使用LLVM架构的编译器，将强类型高级语言编译为WebAssembly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-方式二：在JavaScript代码中调用WebAssembly函数"><span class="toc-number">4.2.2.</span> <span class="toc-text">2.方式二：在JavaScript代码中调用WebAssembly函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、JavaScript与WebAssembly的处理阶段对比"><span class="toc-number">5.</span> <span class="toc-text">五、JavaScript与WebAssembly的处理阶段对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、WebAssembly存在的问题"><span class="toc-number">6.</span> <span class="toc-text">六、WebAssembly存在的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（一）无法直接操作-DOM"><span class="toc-number">6.1.</span> <span class="toc-text">（一）无法直接操作 DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（二）不包含异常处理"><span class="toc-number">6.2.</span> <span class="toc-text">（二）不包含异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（三）无自动垃圾回收机制"><span class="toc-number">6.3.</span> <span class="toc-text">（三）无自动垃圾回收机制</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -210,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
